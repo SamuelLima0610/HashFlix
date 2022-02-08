@@ -29,3 +29,17 @@ class DetalhesFilme(DetailView):
         return context
 
 
+class PesquisaFilme(ListView):
+    template_name = "pesquisa.html"
+    model = Filme
+
+    def get_queryset(self):
+        termo_pesquisa = self.request.GET.get('query')
+        if termo_pesquisa:
+            object_list = self.model.objects.filter(titulo__icontains=termo_pesquisa)
+            return object_list
+        else:
+            return None
+
+
+
