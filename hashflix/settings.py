@@ -63,6 +63,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'movie.context.lista_filmes_recentes',
+                'movie.context.lista_filmes_em_alta',
             ],
         },
     },
