@@ -1,7 +1,8 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from .models import Filme
-from django.views.generic import TemplateView, ListView, DetailView
+from django.views.generic import TemplateView, ListView, DetailView, FormView
 from django.contrib.auth.mixins import LoginRequiredMixin
+from .forms import CriarContaForm
 
 
 class HomePage(TemplateView):
@@ -50,5 +51,20 @@ class PesquisaFilme(LoginRequiredMixin, ListView):
         else:
             return None
 
+
+class EditarPerfil(LoginRequiredMixin, TemplateView):
+    template_name = "editarperfil.html"
+
+
+class CriarConta(FormView):
+    form_class = CriarContaForm
+    template_name = "criarconta.html"
+
+    def form_valid(self, form):
+        form.save()
+        return super().form_valid(form)
+
+    def get_success_url(self):
+        return reverse('filme:login')
 
 

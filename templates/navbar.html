@@ -1,9 +1,15 @@
 {% load static %}
 <nav class="w-full flex justify-between items-center py-3 px-4 fixed z-50 ">
     <div class="w-2/12">
-        <a href="/">
+        {%if user.is_authenticated%}
+        <a href="{% url 'filme:homefilmes'%}">
             <img src="{% static 'images/hashflix.png'%}" class="w-5/12">
         </a>
+        {%else%}
+        <a href="{% url 'filme:homepage'%}">
+            <img src="{% static 'images/hashflix.png'%}" class="w-5/12">
+        </a>
+        {%endif%}
     </div>
     <div class="w-6/12 flex flex-nowrap justify-end ">
         {%if user.is_authenticated%}
@@ -14,14 +20,14 @@
             </form>
         </div>
         <div class="mr-2">
-            <a href="#">
+            <a href="{% url 'filme:editarperfil'%}">
                 <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Editar perfil
                 </button>
             </a>
         </div>
         <div class="mr-2">
-            <a href="#">
+            <a href="{% url 'filme:logout'%}">
                 <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Sair
                 </button>
@@ -29,7 +35,7 @@
         </div>
         {%else%}
         <div class="mr-2">
-            <a href="#">
+            <a href="{% url 'filme:login'%}">
                 <button class="bg-red-600 text-white py-1 px-3 rounded-md">
                     Login
                 </button>
