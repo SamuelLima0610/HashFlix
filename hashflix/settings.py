@@ -27,7 +27,7 @@ DEBUG = False
 
 ALLOWED_HOSTS = [
     '127.0.0.1',
-    'https://hashflixpy.herokuapp.com'
+    'hashflixpy.herokuapp.com'
 ]
 
 
