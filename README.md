@@ -7,6 +7,6 @@ Projeto do curso Python Impressionador. Este projeto visa simular algumas funcio
 - ``Django``
 - ``Python`
 - ``Postgres`
-- 
+
 
  
